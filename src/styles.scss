@@ -1,0 +1,69 @@
+@import './styles/variables';
+// player css settings
+:root {
+  --swiper-navigation-color: #cc212c    ;
+  --swiper-navigation-size: 36px;
+
+  --ag-material-primary-color: #cc212c;
+  ----ag-selected-tab-underline-color: #cc212c;
+}
+
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import './styles/generic';
+
+html, body {
+  height: 100%;
+  background: $ExtraLightBackgroundGrey;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  font-family: $CPLightRegularFont;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 26px !important;
+}
+
+@import '~remixicon/fonts/remixicon.css';
+
+ /* You can add global styles to this file, and also import other style files */
+@import "~ag-grid-community/styles/ag-grid.css";
+@import "~ag-grid-community/styles/ag-theme-balham.css";
+@import "~ag-grid-community/styles/ag-theme-alpine.css";
+@import "~ag-grid-community/styles/ag-theme-material.css";
+//@import "~ag-grid-community/styles/ag-theme-balham-dark.css";
+//@import "~ag-grid-community/styles/ag-theme-fresh.css";
+
+//@import ' ~swiper/css/swiper.min.css';
+
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+
+@import 'node_modules/ngx-toastr/toastr.css';
+// bootstrap style toast
+// or import a bootstrap 4 alert styled design (SASS ONLY)
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
+//@import 'node_modules/ngx-toastr/toastr-bs4-alert';
+
+@import 'node_modules/hamburgers/_sass/hamburgers/hamburgers.scss';
+
+#toast-container > div {
+  opacity:1 !important;
+}
+.toast-bootstrap-compatibility-fix {
+  opacity:1 !important;
+}
+$ph-bg:                   #ced4da;
+$ph-color:                #fff;
+$ph-border-radius:        2px;
+
+$ph-gutter:               0px;
+$ph-spacer:               0px !default;
+
+$ph-avatar-border-radius: 50% !default;
+
+$ph-animation-duration:   .8s !default;
+
+/*@import "~placeholder-loading/src/scss/placeholder-loading";*/
+@import "~@ng-select/ng-select/themes/default.theme.css";

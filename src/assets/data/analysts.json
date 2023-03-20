@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "ANALYST_ID": "10952",
+    "ANALYST_FORMAL_NAME": "Adams, Bryce"
+  },
+  {
+    "id": 2,
+    "ANALYST_ID": "10945",
+    "ANALYST_FORMAL_NAME": "Anton, Giorgia"
+  },
+  {
+    "id": 3,
+    "ANALYST_ID": "10803",
+    "ANALYST_FORMAL_NAME": "Bank, Matt"
+  },
+  {
+    "id": 4,
+    "ANALYST_ID": "854",
+    "ANALYST_FORMAL_NAME": "Bek, Robert"
+  },
+  {
+    "id": 5,
+    "ANALYST_ID": "10916",
+    "ANALYST_FORMAL_NAME": "Biluk, Daine"
+  },
+  {
+    "id": 6,
+    "ANALYST_ID": "10039",
+    "ANALYST_FORMAL_NAME": "Bout, Jacob"
+  },
+  {
+    "id": 7,
+    "ANALYST_ID": "10929",
+    "ANALYST_FORMAL_NAME": "Cabrera, Oscar"
+  },
+  {
+    "id": 8,
+    "ANALYST_ID": "10905",
+    "ANALYST_FORMAL_NAME": "Catellier, Robert"
+  },
+  {
+    "id": 9,
+    "ANALYST_ID": "10417",
+    "ANALYST_FORMAL_NAME": "Chiang, Kevin"
+  },
+  {
+    "id": 10,
+    "ANALYST_ID": "10419",
+    "ANALYST_FORMAL_NAME": "Chiu, Cosmos"
+  }
+]

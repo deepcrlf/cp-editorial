@@ -1,0 +1,55 @@
+<div class="d-flex align-items-center app-submenu">
+  <div class="position-relative mx-2">
+    <input class="app-text-box search-box" id="search-dashboard"
+           placeholder="Search"/>
+
+    <span class="icon-search material-symbols-outlined light-icon clr-burgandy">search</span>
+  </div>
+  <div>
+    <span class="material-symbols-outlined semi-bold-icon header-menu"
+          matTooltip="Custom Date Range"
+          matTooltipPosition="below"
+          (click)="toggleContainer(null)">Date_range</span>
+    <div class="date-range-container" [ngClass]="{'opened': isDateRangeContainerOpened}">
+
+      <div class="one">
+        <div class="two"></div>
+      </div>
+      <div class="date-ranges">
+        <label class="mb-2 mt-2 fw-medium fs-16">Select Date Range</label>
+        <div class="app-mat-form-field ml-3 d-flex align-items-center">
+          <label for="mat-date-range-input-0" class="sr-only sr-only-focusable"></label>
+          <label for="endDate" class="sr-only sr-only-focusable mb-2 mt-2"></label>
+          <mat-form-field appearance="outline" class="">
+              <mat-date-range-input [rangePicker]="picker">
+                  <input id="mat-date-range-input-0" name="start" matStartDate
+                         [formControl]="startDate" placeholder="Start date">
+                  <input id="endDate" name="endDate" matEndDate
+                         [formControl]="endDate" placeholder="End date">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix
+                                     [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+      </div>
+      <div class="see-all ">
+        <button class="app-button-primary my-3"> Apply</button>
+        <button class="app-button-primary my-3"> Download</button>
+<!--
+        <a class="animated-link clr-burgandy fw-medium" href="#">Apply</a>
+        <a class="see-all-link animated-link clr-burgandy fw-medium">Download</a>-->
+      </div>
+    </div>
+  </div>
+  <span class="material-symbols-outlined semi-bold-icon header-menu"
+        matTooltip="Refresh"
+        matTooltipPosition="below">Refresh</span>
+  <span class="material-symbols-outlined header-menu"
+        matTooltip="{{isFullScreen ? 'Collapse Window' : 'Expand Window'}}"
+        matTooltipPosition="below">
+                            <i class="ri-fullscreen-line"
+                               (click)="openFullscreen()" *ngIf="!isFullScreen"></i>
+                            <i class="ri-fullscreen-exit-line"
+                               (click)="closeFullscreen()" *ngIf="isFullScreen"></i>
+                        </span>
+</div>

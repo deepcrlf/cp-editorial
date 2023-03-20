@@ -1,0 +1,49 @@
+@import "../../../styles/variables";
+
+::ng-deep .app-dark-mode {
+  .login-page {
+    .logo-white {
+      display: block !important;
+    }
+
+    .logo-black {
+      display: none !important;
+    }
+  }
+}
+
+.login-page {
+  min-height: calc(100vh - 132px);
+  padding: 16px 25px 25px 25px;
+  background: $ExtraLightBackgroundGrey;
+
+  .logo-white {
+    display: none;
+  }
+
+  .logo-black {
+    display: block;
+  }
+
+  .page-parent {
+    //margin-left: 35px;
+
+    .main-page {
+
+    }
+  }
+
+  .login-container {
+    margin-top: 50px;
+
+    .app-card {
+      height: 600px;
+      width: 450px !important;
+    }
+  }
+
+  .logo-menu-img {
+    padding: 15px 30px;
+  }
+
+}

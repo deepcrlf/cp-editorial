@@ -1,0 +1,80 @@
+<div class="position-relative dashboard-page app-main-page">
+  <div class="d-flex justify-content-between export-section bg-white align-items-center py-2 px-3">
+    <app-breadcrumbs></app-breadcrumbs>
+    <app-submenu></app-submenu>
+  </div>
+  <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
+    <div class="w-100 d-flex align-items-center justify-content-center">
+      <div class="dashboard-container position-relative w-100">
+        <div class="app-container">
+          <div class="row">
+            <div class="col-6">
+              <div class="app-card-container">
+                <div class="app-card bg-white w-100 h-100">
+                  <div class="d-flex card-heading align-items-center justify-content-between px-3 py-2 ">
+                    <div class="d-flex align-items-center ">
+                      <div class="fw-medium clr-burgandy">
+                        Top Performing
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divider"></div>
+                </div>
+                <ngx-ui-loader [loaderId]="'loader-1'"></ngx-ui-loader>
+              </div>
+
+            </div>
+            <div class="col-6">
+              <div class="app-card-container">
+                <div class="app-card bg-white w-100 h-100">
+                  <div class="d-flex card-heading align-items-center justify-content-between px-3 py-2 ">
+                    <div class="d-flex align-items-center ">
+                      <div class="fw-medium clr-burgandy">
+                        Critical Gainings
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divider"></div>
+                </div>
+                <ngx-ui-loader [loaderId]="'loader-2'"></ngx-ui-loader>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="app-card-container">
+                <div class="app-card bg-white w-100 h-100">
+                  <div class="d-flex card-heading align-items-center justify-content-between px-3 py-2 ">
+                    <div class="d-flex align-items-center ">
+                      <div class="fw-medium clr-burgandy">
+                        Top 25
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divider"></div>
+                </div>
+                <ngx-ui-loader [loaderId]="'loader-3'"></ngx-ui-loader>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="app-card-container">
+                <div class="app-card bg-white w-100 h-100">
+                  <div class="d-flex card-heading align-items-center justify-content-between px-3 py-2 ">
+                    <div class="d-flex align-items-center ">
+                      <div class="fw-medium clr-burgandy">
+                        Outstanding Profits
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divider"></div>
+                </div>
+                <ngx-ui-loader [loaderId]="'loader-4'"></ngx-ui-loader>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

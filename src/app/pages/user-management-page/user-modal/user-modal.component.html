@@ -1,0 +1,96 @@
+<mat-dialog-content class="user-modal">
+  <div>
+    <div class="app-card bg-white">
+      <div class="d-flex card-heading justify-content-between align-items-center px-3 py-2 ">
+        <div class="fw-medium clr-white">
+          User Details
+        </div>
+        <span class="app-button-card close-btn fw-medium with-border d-flex align-items-center justify-content-center"
+              mat-dialog-close>
+                    <span class="material-symbols-outlined semi-bold-icon clr-white header-menu"
+                          matTooltip="Close"
+                          matTooltipPosition="below">Close</span>
+                </span>
+      </div>
+      <div class="divider"></div>
+      <div class="d-flex align-items-center justify-content-center header">
+        <img src="/assets/images/cp/Professional_Headshots_21.jpeg" class="profile-icon"
+             alt="profile-image"/>
+      </div>
+      <form [formGroup]="userForm" class="user-profile-form px-3" (ngSubmit)="onSubmitUserProfile()">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-6 pb-3">
+            <div class="form-group">
+              <label class="input-label" for="firstName">First Name </label>
+              <input formControlName="firstName" id="firstName" name="firstName"
+                     class="app-text-box form-control"
+                     [ngClass]="{ 'is-invalid': submitted && fmp.firstName.errors }"
+                     type="text"/>
+              <div *ngIf="submitted && fmp.firstName.errors" class="invalid-feedback">
+                <div *ngIf="fmp.firstName.errors.required">First Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-6 pb-3">
+            <div class="form-group">
+              <label class="input-label" for="firstName">Last Name </label>
+              <input formControlName="lastName" id="lastName" name="lastName"
+                     class="app-text-box form-control"
+                     [ngClass]="{ 'is-invalid': submitted && fmp.lastName.errors }"
+                     type="text"/>
+              <div *ngIf="submitted && fmp.lastName.errors" class="invalid-feedback">
+                <div *ngIf="fmp.lastName.errors.required">Last Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label class="input-label" for="firstName">Email</label>
+              <input formControlName="email" id="email" name="email"
+                     class="app-text-box form-control"
+                     [ngClass]="{ 'is-invalid': submitted && fmp.email.errors }"
+                     type="text"/>
+              <div *ngIf="submitted && fmp.email.errors" class="invalid-feedback">
+                <div *ngIf="fmp.email.errors.required">Email is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label class="input-label" for="firstName">Created Date</label>
+              <input formControlName="createdDate" id="createdDate" name="createdDate"
+                     class="app-text-box form-control"
+                     [ngClass]="{ 'is-invalid': submitted && fmp.createdDate.errors }"
+                     type="text"/>
+              <div *ngIf="submitted && fmp.createdDate.errors" class="invalid-feedback">
+                <div *ngIf="fmp.createdDate.errors.required">Date is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="px-3">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group py-3">
+              <label class="input-label select-label  ">Role</label>
+              <div class="app-select-container">
+                <ng-select class="app-multi-select"
+                           [items]="roles"
+                           [multiple]="false"
+                           bindLabel="name"
+                           bindValue="id"
+                           [(ngModel)]="role">
+                </ng-select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 d-flex align-items-center justify-content-end mb-3">
+            <button (click)="onSubmitUserProfile()" class="app-button-primary my-3"> Save</button>
+          </div></div>
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>

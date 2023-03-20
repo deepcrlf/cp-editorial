@@ -1,0 +1,12 @@
+@import "../../../styles/variables";
+
+.dashboard-page {
+  min-height: calc(100vh - 132px);
+  background: $ExtraLightBackgroundGrey;
+
+  .app-card-container {
+    height: 300px;
+    position: relative;
+    margin-top: 20px;
+  }
+}

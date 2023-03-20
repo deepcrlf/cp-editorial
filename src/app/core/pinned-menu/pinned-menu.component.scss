@@ -1,0 +1,90 @@
+@import '../../../styles/variables';
+
+::ng-deep .app-dark-mode {
+  app-pinned-menu {
+    background: $CPDarkBG !important;
+    border-right: 1px solid $Charcoal;
+
+    .dashboard-menu.pinned-menu {
+      background: $CPDarkBG !important;
+
+      .a-menu{
+        &:hover, &.active{
+          background: $CPDarkCardsBG !important;
+        }
+      }
+    }
+  }
+}
+
+.dashboard-menu.pinned-menu {
+  //margin-top: 59px;
+  /*position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  bottom: 0;*/
+  width: 0;
+  background: #fff;
+  transform: translateX(-400px);
+  transition: all .3s ease-in-out;
+  color: $TextGrey;
+
+  .mat-expansion-panel-header {
+    font-size: 16px;
+  }
+
+  .menu-section {
+    max-height: calc(100vh - 111px);
+    overflow-y: auto;
+  }
+
+  &.opened {
+    width: 300px;
+    transform: translateX(0);
+    // box-shadow: 40px 0 40px -40px rgb(20 19 34 / 20%);
+  }
+
+  .icon-search {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 6px;
+    right: 16px;
+    cursor: pointer;
+  }
+
+  .top-section {
+    margin: 22px 0 16px 8px;
+
+    .icon-menu {
+      color: $CPPrimary;
+      font-size: 1.25rem;
+
+      &:hover {
+        background: $ExtraLightBackgroundGrey;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .a-menu {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 2.5;
+    transition: all .2s ease-in-out;
+    font-family: $CPLightRegularFont;
+    padding-left: 0.5rem;
+
+    .material-symbols-outlined {
+      font-size: 28px;
+    }
+
+    &:hover, &.active {
+      color: $CPPrimary;
+      background: $ExtraLightBackgroundGrey;
+    }
+  }
+}

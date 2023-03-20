@@ -1,0 +1,23 @@
+@import "../../../styles/variables";
+
+::ng-deep .app-dark-mode {
+  .app-footer {
+    .content {
+      background: $CPDarkBG !important;
+    }
+  }
+}
+
+.app-footer {
+  margin-top: 60px;
+
+  .content {
+    position: absolute;
+    background: $ExtraLightBackgroundGrey;
+    //z-index: 999;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    line-height: 2;
+  }
+}
