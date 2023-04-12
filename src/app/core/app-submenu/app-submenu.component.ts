@@ -1,25 +1,43 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
 import {FormControl} from '@angular/forms';
+import {ApplicationService} from "../../services/application/application.service";
 
 @Component({
   selector: 'app-submenu',
   templateUrl: './app-submenu.component.html',
   styleUrls: ['./app-submenu.component.scss']
 })
-export class AppSubmenuComponent implements OnInit{
+export class AppSubmenuComponent implements OnInit {
   isFullScreen = false;
   elem: any;
   isDateRangeContainerOpened = false;
+  submenuSearchText = '';
 
-  startDate = new FormControl(new Date('11/12/2020'));
-  endDate = new FormControl(new Date('11/28/2020'));
+  startDate = new FormControl(new Date('01/10/2023'));
+  endDate = new FormControl(new Date('04/06/2023'));
 
-  constructor(@Inject(DOCUMENT) private document: any,) {
+  constructor(@Inject(DOCUMENT) private document: any, public applicationService: ApplicationService) {
   }
 
   ngOnInit() {
     this.elem = document.documentElement;
+  }
+
+  submenuSearch() {
+    this.applicationService.submenuSearch(this.submenuSearchText);
+  }
+
+  applySubmenuDateFilter() {
+    this.applicationService.applySubmenuDateFilter({startDate: this.startDate, endDate: this.endDate});
+  }
+
+  downloadSubmenuDateFilter() {
+    this.applicationService.downloadSubmenuDateFilter({startDate: this.startDate, endDate: this.endDate});
+  }
+
+  refreshSubmenu() {
+    this.applicationService.refreshFromSubmenu();
   }
 
   toggleContainer(toggle): void {
@@ -28,6 +46,10 @@ export class AppSubmenuComponent implements OnInit{
     } else {
       this.isDateRangeContainerOpened = toggle;
     }
+  }
+
+  clickedOutOfDateRagne() {
+    this.isDateRangeContainerOpened = false;
   }
 
   openFullscreen(): void {

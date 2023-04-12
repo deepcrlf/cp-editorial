@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ApplicationService} from "../../services/application/application.service";
 
 @Component({
   selector: 'app-main-layout',
@@ -6,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-layout.component.scss']
 })
 export class MainLayoutComponent implements OnInit {
-  constructor() { }
+  isLoggedIn = false;
+
+  constructor(public applicationService: ApplicationService) {
+  }
 
   ngOnInit(): void {
+    this.applicationService.getLoggedIn().subscribe(loggedIn => {
+      this.isLoggedIn = loggedIn;
+    });
+
   }
 
 }

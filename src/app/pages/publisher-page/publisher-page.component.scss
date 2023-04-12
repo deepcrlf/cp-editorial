@@ -1,7 +1,7 @@
 @import "../../../styles/variables";
 
 .tracker-page {
-  min-height: calc(100vh - 132px);
+  min-height: calc(100vh - 68px);
   background: $ExtraLightBackgroundGrey;
 
   .header {
@@ -43,9 +43,18 @@
     letter-spacing: 2px;
   }
 
-  ::ng-deep .publisher-thumbnail{
-    width: 40px;
-    height: 40px;
-    margin-bottom: 6px;
+  ::ng-deep {
+    .publisher-thumbnail {
+      width: 40px;
+      margin-bottom: 6px;
+      margin-right: 20px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+    .text-right {
+      text-align: end;
+    }
   }
 }

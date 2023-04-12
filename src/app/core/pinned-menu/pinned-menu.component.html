@@ -5,17 +5,17 @@
            (click)="clickedOutOfdashboardMenu()"></i>
     </div> -->
     <!--<label class="sr-only" for="search-dashboard">Search by Insights</label>-->
-    <!--<div class="position-relative my-2 mx-2">
+    <div class="position-relative my-2 search-box">
         <input class="app-text-box" id="search-dashboard"
-               placeholder="Search"
+               placeholder="Search menu"
                [(ngModel)]="insightSearchText"
                (keyup)="searchInsight()"/>
 
-      <span class="icon-search material-symbols-outlined light-icon clr-burgandy">search</span>
-        &lt;!&ndash;<img alt="alternative text" class="icon-search"
-             src="assets/images/search.svg"/>&ndash;&gt;
-    </div>-->
-    <div class="menu-section px-2 my-2">
+      <span class="icon-search material-symbols-outlined medium-icon">search</span>
+        <!--<img alt="alternative text" class="icon-search"
+             src="assets/images/search.svg"/>-->
+    </div>
+    <div class="menu-section px-2">
         <mat-accordion class="main-lob" #lobAccordion="matAccordion"
                        [multi]="true">
             <mat-expansion-panel *ngFor="let group of dashboardMenus; index as i">
@@ -29,7 +29,7 @@
                         <div class="a-menu" *ngFor="let menu of group.group"
                              [ngClass]="{'active': (menu.tabUrl === router.url)}"
                              (click)="clickMainMenuLink(menu.tabUrl)">
-                          <span class="material-symbols-outlined light-icon pl-2">{{menu.icon}}</span>
+                          <span class="material-symbols-outlined medium-icon pl-2">{{menu.icon}}</span>
                             <span class="px-2">{{menu.name}}</span>
                         </div>
                     </div>

@@ -1,0 +1,10 @@
+<div class="" [ngClass]="{'disable-toggle': isChecked}">
+  <!--<span [ngClass]="{'active': params.value === 'Yes'}" class="yes"
+        (click)="assignPublishedFlag('Yes', $event)">Yes</span>
+  <span [ngClass]="{'active': params.value === 'No'}" class="no"
+        >No</span>-->
+  <mat-slide-toggle class="app-slide-toggle"
+                    [disabled]="isChecked"
+                    (click)="assignPublishedFlag($event)" [(ngModel)]="isChecked"></mat-slide-toggle>
+
+</div>

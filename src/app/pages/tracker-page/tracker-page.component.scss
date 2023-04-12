@@ -1,8 +1,24 @@
-@import "../../../styles/variables";
+@import "src/styles/variables";
 
 .tracker-page {
-  min-height: calc(100vh - 132px);
+  min-height: calc(100vh - 68px);
   background: $ExtraLightBackgroundGrey;
+
+  ::ng-deep .red-cell {
+    color: $CPPrimary;
+    background: rgba(255,0,92,.19);
+    padding: 5px 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: fit-content;
+    border-radius: 4px;
+  }
+
+  ::ng-deep .text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   .header {
     flex-direction: column;

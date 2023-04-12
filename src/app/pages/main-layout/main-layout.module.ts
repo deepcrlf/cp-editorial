@@ -6,6 +6,7 @@ import {HeaderModule} from '../../core/header/header.module';
 import {AppCommonModule} from '../../core/app-common.module';
 import {AppServicesModule} from '../../services/app-services.module';
 import {NgxUiLoaderConfig, NgxUiLoaderModule} from "ngx-ui-loader";
+import {CommonModule} from "@angular/common";
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsColor: '#cc212c',
@@ -22,6 +23,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MainLayoutRoutingModule,
     HeaderModule,
     AppCommonModule,
+    CommonModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     AppServicesModule,
   ],

@@ -10,8 +10,9 @@ import {ApplicationService} from '../../../services/application/application.serv
 })
 export class UserModalComponent implements OnInit, AfterViewInit {
   roles = [
-    {id: 'Publisher', name: 'Publisher'},
-    {id: 'Tracker', name: 'Tracker'},
+    {id: 'Publisher', name: 'Publisher', selected: true},
+    {id: 'Editor', name: 'Editor', selected: false},
+    {id: 'Admin', name: 'Admin', selected: false},
   ];
   userForm: FormGroup;
   submitted = false;
@@ -26,6 +27,10 @@ export class UserModalComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
 
+  }
+
+  onRoleSelect(role: any) {
+    role.selected = !role.selected;
   }
 
   ngOnInit(): void {

@@ -6,17 +6,17 @@
     <!--<img src="./assets/images/Icons/Functional/close.png"
          (click)="toggleContainer(null)"
          alt="close" class="img-icon close-container"/>-->
-    <div class="one">
+    <!--<div class="one">
       <div class="two"></div>
-    </div>
+    </div>-->
     <div class="notifications">
       <div class="notification" *ngFor="let notification of notifications">
         <div class="name">
           <a class="notification-link animated-link clr-burgandy fw-medium" href="#">{{notification.name}}</a></div>
         <div class="date">{{notification.date}}</div>
         <div class="desc clr-burgandy">{{notification.desc}}</div>
-        <i class="ri-delete-bin-6-line clr-burgandy hide-notification"
-           (click)="hideNotification(notification, $event)"></i>
+        <!--<i class="ri-delete-bin-6-line clr-burgandy hide-notification"
+           (click)="hideNotification(notification, $event)"></i>-->
       </div>
     </div>
     <div class="no-notification-msg" *ngIf="!notifications.length">

@@ -17,28 +17,28 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-        MatCheckboxModule,
-        FormsModule,
-        ClickOutsideModule,
-        MatTooltipModule,
-        MatExpansionModule,
-        AppCommonModule,
-    ],
-    declarations: [
-        AppHeaderComponent,
-    ],
-    exports: [
-        AppHeaderComponent,
-    ]
+  imports: [
+    CommonModule,
+    RouterModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatCheckboxModule,
+    FormsModule,
+    ClickOutsideModule,
+    MatTooltipModule,
+    MatExpansionModule,
+    AppCommonModule,
+  ],
+  declarations: [
+    AppHeaderComponent,
+  ],
+  exports: [
+    AppHeaderComponent,
+  ]
 })
 export class HeaderModule {
 }

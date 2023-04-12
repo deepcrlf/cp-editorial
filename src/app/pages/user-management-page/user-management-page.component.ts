@@ -27,17 +27,26 @@ export class UserManagementPageComponent implements OnInit {
     {
       headerName: 'Email', field: 'email',
       search: true, filter: 'agTextColumnFilter',
-      width: 100, pivot: true, type: 'dimension',
+      width: 150, pivot: true, type: 'dimension',
     },
     {
       headerName: 'Role', field: 'role',
       search: true, filter: 'agTextColumnFilter',
-      width: 100, pivot: true, type: 'dimension',
+      width: 70, pivot: true, type: 'dimension',
     },
     {
       headerName: 'Date Created', field: 'createdDate',
       search: true, filter: 'agTextColumnFilter',
       width: 100, pivot: true, type: 'dimension',
+    },
+    {
+      headerName: 'Action', field: 'date',
+      search: true, filter: 'agTextColumnFilter',
+      headerClass: 'text-right',
+      cellRenderer: (params) => `<div class="text-center mt-2 pr-2"><span class="material-symbols-outlined medium-icon">
+                              Edit
+                            </span></div>`,
+      width: 40, pivot: true, type: 'dimension',
     },
   ];
 
@@ -60,136 +69,137 @@ export class UserManagementPageComponent implements OnInit {
   selectedRowsPerPage = 10;
   currentAgGridPage = 0;
   totalAgGridPages = 0;
-  users: any = [
+  usersOriginal: any = [
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Emma',
+      lastName: 'Thompson',
+      email: 'emma.thompson@thecanadianpress.com',
       role: 'Publisher',
-      createdDate: '12/10/2022',
+      createdDate: '12/02/2023',
       id: 1,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Liam',
+      lastName: 'Campbell',
+      email: 'liam.commpbell@thecanadianpress.com',
       role: 'Publisher',
-      createdDate: '12/10/2022',
+      createdDate: '05/09/2021',
       id: 2,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Olivia',
+      lastName: 'Martin',
+      email: 'olivia.martin@thecanadianpress.com',
       role: 'Publisher',
-      createdDate: '12/10/2022',
+      createdDate: '02/03/2019',
       id: 3,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'William',
+      lastName: 'Garcia',
+      email: 'william.garcia@thecanadianpress.com',
       role: 'Publisher',
-      createdDate: '12/10/2022',
+      createdDate: '14/10/2020',
       id: 4,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Sophia',
+      lastName: 'Anderson',
+      email: 'sophia.anderson@thecanadianpress.com',
       role: 'Publisher',
       createdDate: '12/10/2022',
       id: 5,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Noah',
+      lastName: 'Taylor',
+      email: 'noah.taylor@thecanadianpress.com',
       role: 'Publisher',
-      createdDate: '12/10/2022',
+      createdDate: '05/09/2021',
       id: 6,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Isabella',
+      lastName: 'Wilson',
+      email: 'isabella.wilson@thecanadianpress.com',
       role: 'Publisher',
-      createdDate: '12/10/2022',
+      createdDate: '14/10/2020',
       id: 7,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'James',
+      lastName: 'Rodriguez',
+      email: 'james.rodriguez@thecanadianpress.com',
       role: 'Publisher',
-      createdDate: '12/10/2022',
+      createdDate: '02/03/2019',
       id: 8,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Mia',
+      lastName: 'Jackson',
+      email: 'mia.jackson@thecanadianpress.com',
       role: 'Publisher',
       createdDate: '12/10/2022',
       id: 9,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Benjamin',
+      lastName: 'Martinez',
+      email: 'benjamin.martinez@thecanadianpress.com',
       role: 'Publisher',
-      createdDate: '12/10/2022',
+      createdDate: '01/01/2019',
       id: 10,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Charlotte',
+      lastName: 'Phillips',
+      email: 'charlotte.phillips@thecanadianpress.com',
       role: 'Publisher',
       createdDate: '12/10/2022',
       id: 11,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Elijah',
+      lastName: 'Edwards',
+      email: 'elijah.edwards@thecanadianpress.com',
       role: 'Publisher',
       createdDate: '12/10/2022',
       id: 12,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Amelia',
+      lastName: 'Wood',
+      email: 'amelia.wood@thecanadianpress.com',
       role: 'Publisher',
       createdDate: '12/10/2022',
       id: 13,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Lucas',
+      lastName: 'Bennett',
+      email: 'lucas.bennett@thecanadianpress.com',
       role: 'Publisher',
       createdDate: '12/10/2022',
       id: 14,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Harper',
+      lastName: 'Barnes',
+      email: 'harper.barnes@thecanadianpress.com',
       role: 'Publisher',
       createdDate: '12/10/2022',
       id: 15,
     },
     {
-      firstName: 'Jenny',
-      lastName: 'Lee',
-      email: 'jenny@canadian-press.com',
+      firstName: 'Alexander',
+      lastName: 'Ross',
+      email: 'alexander.ross@thecanadianpress.com',
       role: 'Publisher',
       createdDate: '12/10/2022',
       id: 16,
     },
   ];
+  users: any = [];
 
   constructor(private ngxService: NgxUiLoaderService,
               public applicationService: ApplicationService,
@@ -198,13 +208,40 @@ export class UserManagementPageComponent implements OnInit {
 
   ngOnInit() {
     this.showLoaders();
+
+    this.users = [...this.usersOriginal];
+
+    this.registerSubmenuEvents();
+
     this.applicationService.getUser().subscribe((userData: any) => {
-      let user = this.users.find(item=> item.id === userData.id);
-      if(user) {
+      let user = this.users.find(item => item.id === userData.id);
+      if (user) {
         user.role = userData.role;
         this.showLoaders();
         this.onFirstDataRendered();
       }
+    });
+  }
+
+  registerSubmenuEvents() {
+    this.applicationService.onRefreshFromSubmenu().subscribe(() => {
+      this.showLoaders();
+    });
+
+    this.applicationService.onApplySubmenuDateFilter().subscribe(() => {
+      this.showLoaders();
+    });
+
+    this.applicationService.onDownloadSubmenuDateFilter().subscribe(() => {
+      this.showLoaders();
+    });
+
+    this.applicationService.onSubmenuSearch().subscribe((searchText) => {
+      this.users = this.usersOriginal.filter(item => item.firstName.toLowerCase().indexOf(searchText.toLowerCase()) >= 0);
+    });
+
+    this.applicationService.getPinnedMenuOpen().subscribe(menuOpened => {
+      this.onFirstDataRendered();
     });
   }
 

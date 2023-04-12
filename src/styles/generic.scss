@@ -186,11 +186,9 @@
 }
 
 .app-heading {
-  color: $CPPrimary;
+  //color: $CPPrimary;
   font-weight: 400;
   font-family: $CPLightRegularFont !important;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   padding-bottom: 0 !important;
 }
 
@@ -384,9 +382,14 @@
   font-weight: 400;
 }
 
-.fw-bold {
+.fw-semibold {
   font-family: $CPSemiBoldFont !important;
   font-weight: 500;
+}
+
+.fw-bold {
+  font-family: $CPSemiBoldFont !important;
+  font-weight: 600;
 }
 
 .fs-10 {
@@ -400,6 +403,7 @@
 .fs-14 {
   font-size: 0.875rem !important;
 }
+
 .fs-16 {
   font-size: 1rem !important;
 }
@@ -440,22 +444,32 @@
   text-align: right;
 }
 
+.mdc-tooltip__surface {
+  background: #495057 !important;
+  padding: 10px !important;
+}
+
 .app-button-primary {
   color: white;
   background: $CPPrimary;
-  padding: 5px 30px;
+  // padding: 5px 30px;
   border: 1px solid $CPPrimary;
-  border-radius: 8px;
-  font-family: $CPMediumRegularFont;
-  transition: all 0.3s ease-in-out;
+  //border-radius: 8px;
+  font-family: $CPSemiBoldFont;
+  //transition: all 0.3s ease-in-out;
+  //border: 1px solid #6366F1;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  border-radius: 6px;
 
   &:focus, &:active {
     outline: none;
   }
 
   &:hover {
-    border: 1px solid $CPRed;
-    background: $CPRed;
+    border: 1px solid $CPPrimaryHover;
+    background: $CPPrimaryHover;
   }
 
   &.icon {
@@ -475,7 +489,7 @@
 
 .app-button-secondary {
   color: $CPPrimary;
-  padding: 5px 30px;
+  padding: 0.75rem 1.25rem;
   border: 1px solid $CPPrimary;
   border-radius: 8px;
   background: white;
@@ -555,9 +569,16 @@
   border: 1px solid $StrokeGrey;
   width: 99%;
   color: $TextGrey;
-  padding: 9px 15px;
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
+  //padding: 9px 15px;
+  //border-radius: 8px;
+  //transition: all 0.3s ease-in-out;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  padding: 0.75rem 0.75rem;
+  //border: 1px solid #ced4da;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  border-radius: 6px;
 
   &.app-text-area {
     height: auto !important;
@@ -581,14 +602,20 @@
     color: $StrokeGrey;
   }
 
-  &:focus {
+  /*&:focus {
     transition: all 0.3s ease-in-out;
     border: 1px solid $GreyMedium;
     outline: none;
+  }*/
+  &:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem $CPLightPrimary_2;
+    border: 1px solid $CPPrimary;
   }
 
   &:hover {
-    border: 1px solid $GreyMedium;
+    border: 1px solid $CPPrimary;
   }
 
   &::placeholder {
@@ -632,8 +659,14 @@
 }
 
 .input-label {
-  font-weight: 800;
   font-size: 1rem;
+  padding-bottom: 5px;
+}
+
+.form-group {
+  .input-label {
+    padding-bottom: 5px;
+  }
 }
 
 .app-select-container {
@@ -858,36 +891,14 @@ input {
 
   &.app-text-box {
     &:focus {
-      outline: 2px solid $CPPrimary !important;
+      //outline: 2px solid $CPPrimary !important;
       box-shadow: none;
     }
   }
 }
 
 .invalid-feedback {
-  padding-top: 8px;
-  color: $TextGrey;
   position: relative;
-  padding-left: 25px;
-
-  &:before {
-    /*width: 0;
-    height: 0;
-    content: "!";
-    color: white;
-    font-size: 0.75rem;
-    font-family: $CPSemiBoldFont;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 20px solid $CPRed;*/
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 20px;
-    height: 18px;
-    background: url("/../assets/images/Icons/Functional/Error.svg");
-  }
 }
 
 // mat calendar
@@ -954,7 +965,38 @@ input {
     }
   }
 
+  .mat-date-range-input-container {
+    padding-top: 6px;
+  }
+
+  .mat-form-field-appearance-outline {
+    width: 100%;
+
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none;
+    }
+
+    .mat-mdc-form-field-flex {
+      height: 36px;
+    }
+
+    .mat-mdc-form-field-infix {
+      height: 36px;
+      padding: 0;
+    }
+
+    .mat-mdc-text-field-wrapper {
+      height: 36px;
+
+      &.mdc-text-field--focused {
+        outline: none;
+      }
+    }
+  }
+
+
   .mat-form-field-appearance-standard .mat-form-field-flex {
+
     border-radius: 8px;
     padding: 0 .75em 0 .75em;
     border: 1px solid $StrokeGrey;
@@ -1038,10 +1080,14 @@ input {
   &.app-text-box {
     &:focus {
       // outline: 3px solid $StrokeGrey !important;
-      -moz-appearance: none !important;
+      /*-moz-appearance: none !important;
       -webkit-box-shadow: 0 0 0 1px $Charcoal;
       -moz-box-shadow: 0 0 0 1px $Charcoal;
-      box-shadow: 0 0 0 1px $Charcoal;
+      box-shadow: 0 0 0 1px $Charcoal;*/
+      outline: 0 none;
+      outline-offset: 0;
+      box-shadow: 0 0 0 0.2rem $CPLightPrimary_2;
+      border: 1px solid $CPPrimary;
     }
   }
 }
@@ -1140,6 +1186,7 @@ i {
   .ag-picker-field-wrapper:focus {
     box-shadow: 0 0 0 1px $CPPrimary !important;
   }
+
   .ag-input-field-input {
     &:focus {
       border-bottom-color: $CPPrimary !important;
@@ -1290,6 +1337,7 @@ i {
       padding-left: 0;
       color: $TextGrey;
       font-weight: normal;
+      font-size: 14px;
 
       &:first-of-type {
         padding-left: 15px;
@@ -1428,6 +1476,7 @@ i {
       padding-left: 0;
       color: $TextGrey;
       font-weight: normal;
+      font-size: 14px;
 
       &:first-child {
         padding-left: 15px;;
@@ -1579,7 +1628,7 @@ i {
       border-width: 0 1px 1px 0;
       padding: 5px;
       vertical-align: inherit;
-      color: $CPPrimary;
+      color: $CoolGrey;
     }
   }
 
@@ -1588,14 +1637,15 @@ i {
   }
 
   .mat-expansion-panel-body {
-    padding-top: 15px;
+    padding: 0 0 5px 0;
     //background: $LightBackgroundGrey;
     //border-left: 4px solid $CPPrimary;
   }
 
   .mat-expansion-panel-header-title {
     font-family: $CPMediumRegularFont !important;
-    color: $CPPrimary !important;
+    color: $CoolGrey !important;
+    text-transform: uppercase;
 
     .app-text-box {
       transition: all 0.2s ease-in-out;
@@ -1616,8 +1666,8 @@ i {
     color: $TextGrey;
 
     .mat-expansion-panel-header {
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 20px;
+      padding-right: 20px;
       // height: 45px !important;
       position: relative;
 
@@ -1665,7 +1715,7 @@ i {
       }
 
       &.mat-expanded {
-        background: $ExtraLightBackgroundGrey;
+        background: white;
 
         &:before {
           border-left: none;
@@ -3015,6 +3065,7 @@ mat-dialog-container.mat-dialog-container {
 
 .mdc-dialog {
   letter-spacing: normal;
+
   .mdc-dialog__content.mat-mdc-dialog-content {
     padding: 0;
     letter-spacing: normal;

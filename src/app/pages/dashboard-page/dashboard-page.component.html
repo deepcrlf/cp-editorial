@@ -6,70 +6,82 @@
   <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
     <div class="w-100 d-flex align-items-center justify-content-center">
       <div class="dashboard-container position-relative w-100">
+
         <div class="app-container">
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
+              <div class="section-heading-h2 fw-medium pt-4 mb-3">Welcome to the Editorial Portal</div>
+              <div class="section-heading-h3 fw-medium mb-4">The Editorial management portal
+                that provides a centralized platform for managing editorial workflows, content and resources.
+              </div>
+            </div>
+          </div>
+          <div class="section-heading-h3 fw-medium">Tools </div>
+          <div class="row">
+            <div class="col-3">
               <div class="app-card-container">
-                <div class="app-card bg-white w-100 h-100">
-                  <div class="d-flex card-heading align-items-center justify-content-between px-3 py-2 ">
-                    <div class="d-flex align-items-center ">
-                      <div class="fw-medium clr-burgandy">
-                        Top Performing
-                      </div>
+                <div class="app-card bg-white w-100 h-100 d-flex justify-content-center"
+                     [routerLink]="'/tracker'">
+                  <div class="text-center dash-menu">
+                    <div class="menu-icon mb-3">
+                      <span class="material-symbols-outlined semi-bold-icon">auto_stories</span>
                     </div>
+                    <div class="menu-name pb-3">Apple Tracker</div>
+                    <div class="menu-content">An editorial tracker dashboard tool that provides
+                      comprehensive insights for managing publishing workflows.
+                    </div>
+
                   </div>
-                  <div class="divider"></div>
                 </div>
                 <ngx-ui-loader [loaderId]="'loader-1'"></ngx-ui-loader>
               </div>
 
             </div>
-            <div class="col-6">
+            <div class="col-3">
               <div class="app-card-container">
-                <div class="app-card bg-white w-100 h-100">
-                  <div class="d-flex card-heading align-items-center justify-content-between px-3 py-2 ">
-                    <div class="d-flex align-items-center ">
-                      <div class="fw-medium clr-burgandy">
-                        Critical Gainings
-                      </div>
+                <div class="app-card bg-white w-100 h-100 d-flex justify-content-center"
+                     [routerLink]="'/publisher'">
+                  <div class="text-center dash-menu">
+                    <div class="menu-icon mb-3">
+                      <span class="material-symbols-outlined semi-bold-icon">panorama</span>
                     </div>
+                    <div class="menu-name pb-3">Photo Publisher</div>
+                    <div class="menu-content">A photo metadata update tool that enables
+                      editing and management of images for editorial use.
+                    </div>
+
                   </div>
-                  <div class="divider"></div>
                 </div>
                 <ngx-ui-loader [loaderId]="'loader-2'"></ngx-ui-loader>
               </div>
-            </div>
-            <div class="col-6">
-              <div class="app-card-container">
-                <div class="app-card bg-white w-100 h-100">
-                  <div class="d-flex card-heading align-items-center justify-content-between px-3 py-2 ">
-                    <div class="d-flex align-items-center ">
-                      <div class="fw-medium clr-burgandy">
-                        Top 25
-                      </div>
-                    </div>
-                  </div>
-                  <div class="divider"></div>
-                </div>
-                <ngx-ui-loader [loaderId]="'loader-3'"></ngx-ui-loader>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="app-card-container">
-                <div class="app-card bg-white w-100 h-100">
-                  <div class="d-flex card-heading align-items-center justify-content-between px-3 py-2 ">
-                    <div class="d-flex align-items-center ">
-                      <div class="fw-medium clr-burgandy">
-                        Outstanding Profits
-                      </div>
-                    </div>
-                  </div>
-                  <div class="divider"></div>
-                </div>
-                <ngx-ui-loader [loaderId]="'loader-4'"></ngx-ui-loader>
-              </div>
+
             </div>
           </div>
+
+          <div class="row pt-4">
+            <div class="col-3">
+              <div class="section-heading-h3 fw-medium my-2">Administration </div>
+              <div class="app-card-container">
+                <div class="app-card bg-white w-100 h-100 d-flex justify-content-center"
+                     [routerLink]="'/users'">
+                  <div class="text-center dash-menu">
+                    <div class="menu-icon mb-3">
+                      <span class="material-symbols-outlined semi-bold-icon">badge</span>
+                    </div>
+                    <div class="menu-name pb-3">Manage Users</div>
+                    <div class="menu-content">A user management update tool
+                      that streamlines the process of managing and organizing user data and permissions.
+                    </div>
+
+                  </div>
+                </div>
+                <ngx-ui-loader [loaderId]="'loader-5'"></ngx-ui-loader>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
       </div>

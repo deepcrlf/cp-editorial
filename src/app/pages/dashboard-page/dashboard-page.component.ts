@@ -15,16 +15,20 @@ export class DashboardPageComponent implements OnInit {
   }
 
   showLoaders() {
-    this.ngxService.startLoader("loader-1");
+    /*this.ngxService.startLoader("loader-1");
     this.ngxService.startLoader("loader-2");
     this.ngxService.startLoader("loader-3");
     this.ngxService.startLoader("loader-4");
-
+    this.ngxService.startLoader("loader-5");
+    this.ngxService.startLoader("loader-6");
+*/
     setTimeout(() => {
-      this.ngxService.stopLoader("loader-1");
+      /*this.ngxService.stopLoader("loader-1");
       this.ngxService.stopLoader("loader-2");
       this.ngxService.stopLoader("loader-3");
       this.ngxService.stopLoader("loader-4");
+      this.ngxService.stopLoader("loader-5");
+      this.ngxService.stopLoader("loader-6");*/
     }, 1000);
   }
 

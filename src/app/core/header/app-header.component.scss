@@ -5,12 +5,12 @@
   text-indent: -9999em;
 }
 
-$dot-menu-size: 60px;
-$dot-menu-color: rgba(0, 0, 0, .03);
-$dot-menu-color-active: rgba(0, 0, 0, .1);
+$dot-menu-size: 68px;
+$dot-menu-color: white;
+$dot-menu-color-active: white;
 $dot-menu-dot-color: white;
 $dot-menu-dot-color-active: $CPPrimary;
-$dot-menu-dot-size: $dot-menu-size / 6;
+$dot-menu-dot-size: $dot-menu-size / 11;
 @mixin dot-menu-circle {
   content: "";
   position: absolute;
@@ -23,10 +23,19 @@ $dot-menu-dot-size: $dot-menu-size / 6;
 
 .dot-menu {
   position: relative;
+
   &:hover {
     .dot-menu__label {
       background-color: white;
       color: $CPPrimary;
+    }
+
+    .dot-menu__checkbox {
+      ~ .dot-menu__label:before,
+      ~ .dot-menu__label span:before,
+      ~ .dot-menu__label:after {
+        background-color: $dot-menu-dot-color-active;
+      }
     }
   }
 }
@@ -43,17 +52,18 @@ $dot-menu-dot-size: $dot-menu-size / 6;
 }
 
 .dot-menu__label:after {
-  top: $dot-menu-size - $dot-menu-size / 3;
+  top: 43px;
 }
 
 .dot-menu__label:before {
-  top: $dot-menu-size / 6;
+  top: 19px;
 }
 
 .dot-menu__checkbox:checked {
   ~ .dot-menu__label {
     background-color: $dot-menu-color-active;
   }
+
   ~ .dot-menu__label:before,
   ~ .dot-menu__label span:before,
   ~ .dot-menu__label:after {
@@ -61,9 +71,10 @@ $dot-menu-dot-size: $dot-menu-size / 6;
     //move all icons into the center
     top: $dot-menu-size / 2 - $dot-menu-dot-size / 2
   }
+
   ~ .dot-menu__label span:before {
     width: $dot-menu-size / 2;
-    left: $dot-menu-size / 2 - $dot-menu-dot-size - $dot-menu-dot-size / 2;
+    left: 17.5px;
   }
 }
 
@@ -71,9 +82,10 @@ $dot-menu-dot-size: $dot-menu-size / 6;
   cursor: pointer;
   width: $dot-menu-size;
   height: $dot-menu-size;
-  background-color: $dot-menu-color;
+  //background-color: $dot-menu-color;
   display: block;
   @include text-invisible;
+
   span:before {
     @include dot-menu-circle;
     left: $dot-menu-size / 2 - $dot-menu-dot-size / 2;
@@ -177,8 +189,9 @@ $dot-menu-dot-size: $dot-menu-size / 6;
       .option {
         line-height: 1.5;
         position: relative;
-        margin-bottom: 15px;
+        margin-bottom: 8px;
         padding-bottom: 5px;
+        color: $TextGrey;
 
         &:last-child {
           margin-bottom: 0;
@@ -186,7 +199,7 @@ $dot-menu-dot-size: $dot-menu-size / 6;
 
         .name {
           .material-symbols-outlined {
-            font-size: 28px;
+            font-size: 24px;
           }
         }
 
@@ -194,6 +207,7 @@ $dot-menu-dot-size: $dot-menu-size / 6;
           cursor: pointer;
           padding-top: 4px;
           padding-left: 5px;
+          color: $TextGrey;
           font-size: 1rem;
         }
       }
@@ -225,8 +239,7 @@ $dot-menu-dot-size: $dot-menu-size / 6;
       }
 
       &:hover {
-        background: white;
-        color: $CPPrimary;
+        background: $CPPrimaryHover;
         cursor: pointer;
       }
     }
@@ -239,8 +252,8 @@ $dot-menu-dot-size: $dot-menu-size / 6;
         color: white;
 
         &:hover, &.active {
-          background: white;
-          color: $CPPrimary;
+          background: $CPPrimaryHover;
+          color: white;
           cursor: pointer;
         }
       }
@@ -249,7 +262,7 @@ $dot-menu-dot-size: $dot-menu-size / 6;
     .right-icons .header-menu {
       &span, &.material-symbols-outlined {
         cursor: pointer;
-        font-size: 28px;
+        font-size: 24px;
         padding: 22px 20px;
         //border-left: 1px solid white;
         display: flex;
@@ -260,6 +273,7 @@ $dot-menu-dot-size: $dot-menu-size / 6;
   .burg-menu {
     position: relative;
     margin-right: 10px;
+    transition: all 0.8s ease;
 
     .dashboard-menu {
       //margin-top: 59px;
@@ -325,6 +339,11 @@ $dot-menu-dot-size: $dot-menu-size / 6;
 
   }
 
+  .mode-divider {
+    border-right: 1px solid white;
+    height: 18px;
+  }
+
   .logo-menu {
     margin-right: 40px;
 
@@ -339,6 +358,7 @@ $dot-menu-dot-size: $dot-menu-size / 6;
     margin-bottom: 9px;
   }
 
+
   .search {
     flex: 1;
     display: flex;
@@ -351,32 +371,42 @@ $dot-menu-dot-size: $dot-menu-size / 6;
 
       .light-dark-switch {
         cursor: pointer;
-        display: flex;
+
+        .material-symbols-outlined {
+          padding: 8px 8px;
+          transform: rotate(330deg);
+          border: 1px solid $CPLightPrimary;
+          border-radius: 50%;
+        }
+
+        /*display: flex;
         align-items: center;
         justify-content: center;
         box-shadow: inset 0 0 5px white, 0 0 10px white;
         border: 2px solid white;
         width: 90px;
-        border-radius: 20px;
+        border-radius: 20px;*/
 
         .active {
-          background: #cf6262;
+          //background: #cf6262;
         }
 
         .dark-mode {
-          padding: 4px 8px 4px 8px;
-          border-right: 2px solid white;
-          font-variation-settings: "FILL" 100;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
+          /*padding: 4px 8px 4px 8px;
+          border-right: 2px solid white;*/
+          //font-variation-settings: "FILL" 100;
+          /*border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;*/
         }
 
         .light-mode {
-          padding: 4px 8px 4px 8px;
+          //padding: 4px 8px 4px 8px;
           font-variation-settings: "FILL" 100;
-          border-top-right-radius: 20px;
-          border-bottom-right-radius: 20px;
+          /*border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;*/
         }
+
+
       }
     }
 
@@ -445,6 +475,11 @@ $dot-menu-dot-size: $dot-menu-size / 6;
   @include tablet-mobile {
     //height: 100%;
   }
+
+  @media only screen and (max-width: 1440px) {
+    display: none;
+  }
+
 
   .skip-to-main-content {
     padding: 8px 40px;

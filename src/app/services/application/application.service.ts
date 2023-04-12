@@ -9,6 +9,10 @@ export class ApplicationService {
   private pinnedMenuOpen = new BehaviorSubject<any>(false);
   private isFilterContainerOpened = new BehaviorSubject<any>(false);
   private searchText = new BehaviorSubject<any>('');
+  private submenuSearchText = new BehaviorSubject<any>('');
+  private dateFilterToApply = new BehaviorSubject<any>('');
+  private dateFilterToDownload = new BehaviorSubject<any>('');
+  private refreshPage = new BehaviorSubject<any>('');
   private user = new BehaviorSubject<any>('');
   private openLogInTool = new Subject<any>();
 
@@ -53,6 +57,38 @@ export class ApplicationService {
 
   getSearchText(): Observable<any> {
     return this.searchText.asObservable();
+  }
+
+  submenuSearch(searchText: any): void {
+    this.submenuSearchText.next(searchText);
+  }
+
+  onSubmenuSearch(): Observable<any> {
+    return this.submenuSearchText.asObservable();
+  }
+
+  applySubmenuDateFilter(dateRange: any): void {
+    this.dateFilterToApply.next(dateRange);
+  }
+
+  onApplySubmenuDateFilter(): Observable<any> {
+    return this.dateFilterToApply.asObservable();
+  }
+
+  downloadSubmenuDateFilter(dateRange: any): void {
+    this.dateFilterToDownload.next(dateRange);
+  }
+
+  onDownloadSubmenuDateFilter(): Observable<any> {
+    return this.dateFilterToDownload.asObservable();
+  }
+
+  refreshFromSubmenu(): void {
+    this.refreshPage.next(true);
+  }
+
+  onRefreshFromSubmenu(): Observable<any> {
+    return this.refreshPage.asObservable();
   }
 
   setUser(searchText: any): void {

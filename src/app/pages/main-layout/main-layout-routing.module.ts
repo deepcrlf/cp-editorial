@@ -35,7 +35,7 @@ const routes: Routes = [
       {
         path: 'tracker',
         data: {
-          title: 'Tracker',
+          title: 'Apple Tracker',
           status: true
         }, canActivate: [AuthGuardService],
         loadChildren: () => import('../tracker-page/tracker-page.module').then(m => m.TrackerPageModule)

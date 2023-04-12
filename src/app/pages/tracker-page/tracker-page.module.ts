@@ -6,6 +6,11 @@ import { TrackerPageRoutingModule } from './tracker-page-routing.module';
 import { TrackerPageComponent } from './tracker-page.component';
 import {AppCommonModule} from "../../core/app-common.module";
 import {NgxUiLoaderConfig, NgxUiLoaderModule} from "ngx-ui-loader";
+import {TogglePublishComponent} from "./toggle-publish-component/toggle-publish.component";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {PublishModalComponent} from "./publish-modal/publish-modal.component";
+import {MatDialogModule} from "@angular/material/dialog";
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsColor: '#cc212c',
@@ -16,11 +21,17 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 
 @NgModule({
   declarations: [
-    TrackerPageComponent
+    TrackerPageComponent,
+    TogglePublishComponent,
+    PublishModalComponent,
   ],
   imports: [
     CommonModule,
     AppCommonModule,
+    MatSlideToggleModule,
+    FormsModule,
+    MatDialogModule,
+    ReactiveFormsModule,
     AgGridModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     TrackerPageRoutingModule

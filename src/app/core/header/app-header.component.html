@@ -1,167 +1,126 @@
 <mat-sidenav-container class="sidenav-container" (scroll)="onWindowScroll($event);"
                        [ngClass]="{'app-light-mode': isLightMode, 'app-dark-mode': !isLightMode}">
-    <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-                 [ngClass]="{hidden: !(isHandset$.matches)}"
-                 [attr.role]="(isHandset$.matches) ? 'dialog' : 'navigation'"
-                 [mode]="(isHandset$.matches) ? 'over' : 'side'" [autoFocus]="false">
-        <!--This below section is for mobile view-->
-        <mat-nav-list>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content [ngClass]="{'sidebar-opened': toggleSideNav}">
-        <mat-toolbar color="primary" class="header-toolbar">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+               [ngClass]="{hidden: !(isHandset$.matches)}"
+               [attr.role]="(isHandset$.matches) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$.matches) ? 'over' : 'side'" [autoFocus]="false">
+    <!--This below section is for mobile view-->
+    <mat-nav-list>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content [ngClass]="{'sidebar-opened': toggleSideNav}">
+    <mat-toolbar color="primary" class="header-toolbar">
 
-            <div [ngClass]="{hidden: (isHandset$.matches)}" class="menu-row" id="menu-row">
-                <div>
-                    <a class="skip-to-main-content" aria-label="Skip to main content"
-                       href="#" (click)="goToMainContent('main-content')">
-                        Skip to main content
-                    </a>
-                </div>
-                <div class="dashboard-header">
-                    <div class="burg-menu d-flex align-items-center mr-3">
-                      <span class="material-symbols-outlined semi-bold-icon header-menu"
-                            *ngIf="!isLoginPage"
-                            [ngClass]="{'active': dashboardMenuOpened}"
-                            (click)="opendashboardMenu($event)">format_list_bulleted</span>
-                      <!--<div class="dot-menu"
-                           (click)="opendashboardMenu($event)">
-                        <input id="dot-menu" type="checkbox" class="dot-menu__checkbox">
-                        <label for="dot-menu" class="dot-menu__label"><span>Menu</span></label>
-                      </div>-->
-                      <!--<i class=" lnr ri-grid-fill " [ngClass]="{'active': dashboardMenuOpened}"
-                           (click)="opendashboardMenu($event)"></i>-->
+      <div [ngClass]="{hidden: (isHandset$.matches)}" class="menu-row" id="menu-row">
+        <div>
+          <a class="skip-to-main-content" aria-label="Skip to main content"
+             href="#" (click)="goToMainContent('main-content')">
+            Skip to main content
+          </a>
+        </div>
+        <div class="dashboard-header">
+          <div class="burg-menu d-flex align-items-center mr-3">
+            <span class="material-symbols-outlined semi-bold-icon header-menu"
+                  *ngIf="!isLoginPage"
+                  [ngClass]="{'active': dashboardMenuOpened}"
+                  (click)="opendashboardMenu($event)">segment</span>
+            <!--<div class="dot-menu header-menu"
+                 *ngIf="!isLoginPage">
+              <input id="dot-menu" type="checkbox" class="dot-menu__checkbox"
+                     value="{{!isLoggedIn}}" checked="{{!isLoggedIn}}"
+                     (click)="opendashboardMenu($event)">
+              <label for="dot-menu" class="dot-menu__label"><span></span></label>
+            </div>-->
+          </div>
+          <div class="logo-menu d-flex fw-medium align-items-center cursor-pointer"
+               [routerLink]="'/dash'"
+               [ngClass]="{'in-login-page': isLoginPage}">
+            <img src="/assets/images/cp/CP_logo_white.svg" alt="logo " class="logo-menu-img">
+            <span class="logo-text">
+                          <span class="fw-bold text1">{{isLoginPage ? 'Editorial' : ''}}</span>
+                          <span class="fw-medium text2">{{isLoginPage ? 'Portal' : ''}}</span>
+                        </span>
+          </div>
+          <div class="search"
+               *ngIf="!isLoginPage">
+            <div class="search-box d-flex align-items-center justify-content-end">
+              <!--<img alt="alternative text" class="icon-search"
+                   src="assets/images/search.svg"/>
 
-                        <!--<div class="dashboard-menu" [ngClass]="{'opened': dashboardMenuOpened}"
-                             (clickOutside)="clickedOutOfdashboardMenu()">
+              <div class="dashboard-search-result pr-4 pl-4 pt-2 pb-2 "
+                   [ngClass]="{'opened': dashboardSearchOpened}"
+                   (clickOutside)="clickedOutOfdashboardSearch($event)">
+                  <div class="fw-medium pb-2 pt-2">Reports</div>
+                  <div class="divider mb-3"></div>
+                  <div class="result-container d-flex align-items-center pb-3 pt-2"
+                       *ngFor="let res of dashboardSearchResult">
+                      <span class="lnr lnr-file-empty header-menu pr-3"></span>
 
-                            <div class="top-section">
-                                <i class="lnr ri-grid-fill icon-menu p-3"
-                                   (click)="clickedOutOfdashboardMenu()"></i>
-                            </div>
-                            <label class="sr-only" for="search-dashboard">Search by Insights</label>
-                            <div class="position-relative mb-3 mx-2">
-                                <input class="app-text-box" id="search-dashboard"
-                                       placeholder="Search Insights"
-                                       [(ngModel)]="insightSearchText"
-                                       (keyup)="searchInsight()"/>
-                                <img alt="alternative text" class="icon-search"
-                                     src="assets/images/search.svg"/>
-                            </div>
-                            <div class="menu-section px-2">
-                                <mat-accordion class="main-lob" #lobAccordion="matAccordion"
-                                               [multi]="true">
-                                    <mat-expansion-panel *ngFor="let group of dashboardMenus; index as i">
-                                        <mat-expansion-panel-header>
-                                            <mat-panel-title>
-                                                <span>{{group.name }}</span>
-                                            </mat-panel-title>
-                                        </mat-expansion-panel-header>
-                                        <div class="d-flex w-100 ">
-                                            <div class="group align-self-stretch" [ngClass]="{'w-50': group.group2, 'w-100': !group.group2}">
-                                                <div class="a-menu" *ngFor="let menu of group.group"
-                                                     (click)="clickMainMenuLink(menu.tabUrl)">
-                                                    &lt;!&ndash;<span class="{{menu.icon}} pl-2"></span>&ndash;&gt;
-                                                    <span class="px-2">{{menu.name}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="group2" *ngIf="group.group2">
-                                                <div class="a-menu" *ngFor="let menu of group.group2">
-                                                    &lt;!&ndash;<span class="{{menu.icon}} pl-2"></span>&ndash;&gt;
-                                                    <span class="px-2">{{menu.name}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </mat-expansion-panel>
-                                </mat-accordion>
-                            </div>
-                        </div>-->
-                    </div>
-                    <div class="logo-menu d-flex fw-medium align-items-center"
-                         [ngClass]="{'in-login-page': isLoginPage}">
-                        <img src="/assets/images/cp/CP_logo_white.svg" alt="logo " class="logo-menu-img">
-                        <span class="logo-text">
-                          <span class="fw-bold">Editorial</span>
-                          <span class="fw-medium">Portal</span></span>
-                    </div>
-                    <div class="search"
-                         *ngIf="!isLoginPage">
-                        <div class="search-box d-flex align-items-center justify-content-end">
-                            <!--<img alt="alternative text" class="icon-search"
-                                 src="assets/images/search.svg"/>
-
-                            <div class="dashboard-search-result pr-4 pl-4 pt-2 pb-2 "
-                                 [ngClass]="{'opened': dashboardSearchOpened}"
-                                 (clickOutside)="clickedOutOfdashboardSearch($event)">
-                                <div class="fw-medium pb-2 pt-2">Reports</div>
-                                <div class="divider mb-3"></div>
-                                <div class="result-container d-flex align-items-center pb-3 pt-2"
-                                     *ngFor="let res of dashboardSearchResult">
-                                    <span class="lnr lnr-file-empty header-menu pr-3"></span>
-
-                                </div>
-                            </div>-->
-                          <div class="light-dark-switch">
+                  </div>
+              </div>-->
+              <div class="light-dark-switch">
                             <span class="material-symbols-outlined medium-icon dark-mode active"
-                                  matTooltip="Dark Mode"
+                                  matTooltip="Switch to Dark Mode"
                                   matTooltipPosition="below"
-                                  [ngClass]="{'active': !isLightMode}" (click)="goToDarkMode($event)">
-                              nightlight
-                            </span>
-                            <span class="material-symbols-outlined medium-icon light-mode"
-                                  matTooltip="Light Mode"
-                                  matTooltipPosition="below"
-                                  [ngClass]="{'active': isLightMode}" (click)="goToLightMode($event)">
+                                  *ngIf="isLightMode" (click)="goToDarkMode($event)">
                               light_mode
                             </span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="right-icons d-flex align-items-center"
-                         *ngIf="!isLoginPage">
-                        <app-notifications
-                          matTooltip="Notifications"
-                          matTooltipPosition="below"></app-notifications>
-
-                        <div class="user-profile d-flex align-items-center" (click)="toggleProfileOptions()">
-                          <span class="material-symbols-outlined profile-icon">
-                              person
+                <span class="material-symbols-outlined medium-icon light-mode"
+                      matTooltip="Switch to Light Mode"
+                      matTooltipPosition="below"
+                      *ngIf="!isLightMode" (click)="goToLightMode($event)">
+                              nightlight
                             </span>
-                          <span class="fw-medium">Helen Washington</span>
-                            <span class="material-symbols-outlined light-icon">
+
+              </div>
+            </div>
+          </div>
+          <span class="mode-divider" *ngIf="!isLoginPage"></span>
+          <div class="right-icons d-flex align-items-center"
+               *ngIf="!isLoginPage">
+            <app-notifications
+              matTooltip="Notifications"
+              matTooltipPosition="below"></app-notifications>
+
+            <div class="user-profile d-flex align-items-center"(clickOutside)="clickedOutOfUserProfile()"
+                 (click)="toggleProfileOptions()">
+                          <span class="material-symbols-outlined profile-icon">
+                              account_circle
+                            </span>
+              <span class="fw-bold">Helen Washington</span>
+              <span class="material-symbols-outlined medium-icon">
                               expand_more
                             </span>
-                          <div class="profile-opt-container" [ngClass]="{'opened': isProfileContainerOpened}">
-                            <div class="one">
-                              <div class="two"></div>
-                            </div>
-                            <div class="options">
-                              <div class="option" *ngFor="let notification of profileOptions">
-                                <div class="name d-flex align-items-center">
-                                  <span class="material-symbols-outlined clr-burgandy medium-icon-icon pr-2">
+              <div class="profile-opt-container" [ngClass]="{'opened': isProfileContainerOpened}">
+                <!--<div class="one">
+                  <div class="two"></div>
+                </div>-->
+                <div class="options">
+                  <div class="option" *ngFor="let notification of profileOptions">
+                    <div class="name d-flex align-items-center">
+                                  <span class="material-symbols-outlined medium-icon-icon pr-2">
                                     {{notification.icon}}</span>
-                                  <a class="option-link animated-link clr-burgandy fw-medium"
-                                     (click)="profileOptionMenuClick(notification.route)">
-                                    {{notification.name}}</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                      <a class="option-link animated-link fw-medium"
+                         (click)="profileOptionMenuClick(notification.route)">
+                        {{notification.name}}</a>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </mat-toolbar>
-        <!-- Add Content Here -->
-        <ng-content class="header-content">
-        </ng-content>
-
-        <div id="scroll-to-top-container" aria-label="Back to top"
-             class="scroll-to-top-container animated animatedFadeInUp fadeInUp"
-             [ngClass]="{'offline': isAppOffline}"
-             (click)="scrollToTop()">
-            <div class="img-container"></div>
+          </div>
         </div>
-    </mat-sidenav-content>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content class="header-content">
+    </ng-content>
+
+    <div id="scroll-to-top-container" aria-label="Back to top"
+         class="scroll-to-top-container animated animatedFadeInUp fadeInUp"
+         [ngClass]="{'offline': isAppOffline}"
+         (click)="scrollToTop()">
+      <div class="img-container"></div>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

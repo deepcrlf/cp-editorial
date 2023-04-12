@@ -9,6 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {Subject} from 'rxjs';
 import {MatAccordion} from '@angular/material/expansion';
 import {DOCUMENT} from '@angular/common';
+import Typewriter from 't-writer.js'
 
 @Component({
   selector: 'app-header',
@@ -79,7 +80,6 @@ import {DOCUMENT} from '@angular/common';
 export class AppHeaderComponent implements OnInit {
   @ViewChild(MatSidenav) drawer: MatSidenav;
   @ViewChild(HTMLElement) MobileToolbar: HTMLElement;
-  @ViewChild('lobAccordion') lobAccordion: MatAccordion;
 
   expandAllLobs = true;
   closeAllLobs = true;
@@ -381,7 +381,15 @@ export class AppHeaderComponent implements OnInit {
               private applicationService: ApplicationService) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
+    ).subscribe((data) => {
+      console.log(data);
+
+      //@ts-ignore
+      if (data.url === '/login') {
+        this.applicationService.setLoggedIn(false);
+        this.dashboardMenuOpened = false;
+        this.applicationService.setPinnedMenuOpen(this.dashboardMenuOpened);
+      }
       window.scroll(0, 0);
       this.headerMenuOpened = false;
       this.reportMenuOpened = false;
@@ -408,6 +416,32 @@ export class AppHeaderComponent implements OnInit {
 
       if (this.isLoggedIn) {
         this.opendashboardMenu();
+
+        const target = document.querySelector('.text1')
+        const target2 = document.querySelector('.text2')
+        target.innerHTML = '';
+        target2.innerHTML = '';
+
+        const options = {
+          cursorColor: 'white',
+          typeColor: 'white'
+        }
+
+        const writer = new Typewriter(target, options)
+        const writer2 = new Typewriter(target2, options)
+        writer
+          .type('Editorial')
+          .rest(800)
+          .start()
+        writer.removeCursor();
+
+        setTimeout(() => {
+          writer2
+            .type('Portal')
+            .rest(1000)
+            .start()
+          writer2.removeCursor();
+        }, 500)
       }
 
       this.setIsLogin();
@@ -444,11 +478,12 @@ export class AppHeaderComponent implements OnInit {
     this.router.navigateByUrl(route);
   }
 
-  goToLightMode($event){
+  goToLightMode($event) {
     $event.stopPropagation();
     this.isLightMode = true;
   }
-  goToDarkMode($event){
+
+  goToDarkMode($event) {
     $event.stopPropagation();
     this.isLightMode = false;
   }
@@ -493,49 +528,6 @@ export class AppHeaderComponent implements OnInit {
     /*setTimeout(() => {
         this.cookieSaved = false;
     }, 2000);*/
-  }
-
-  searchInsight(): void {
-    if (this.insightSearchText) {
-      this.dashboardMenus = [
-        {
-          name: 'Executive Dashboards',
-          group: [...this.dashboardMenus1.filter(item => item.name.toLowerCase().indexOf(this.insightSearchText.toLowerCase()) >= 0)]
-        }, {
-          name: 'DI Dashboards',
-          group: [...this.dashboardMenus1.filter(item => item.name.toLowerCase().indexOf(this.insightSearchText.toLowerCase()) >= 0)],
-          group2: [...this.dashboardMenus2.filter(item => item.name.toLowerCase().indexOf(this.insightSearchText.toLowerCase()) >= 0)]
-        }, {
-          name: 'Premimum Edge Dashboards',
-          group: [...this.dashboardMenus3.filter(item => item.name.toLowerCase().indexOf(this.insightSearchText.toLowerCase()) >= 0)]
-        }, {
-          name: 'Other Dashboards',
-          group: [...this.dashboardMenus4.filter(item => item.name.toLowerCase().indexOf(this.insightSearchText.toLowerCase()) >= 0)]
-        }, {
-          name: 'Administration',
-          group: [...this.dashboardMenus5.filter(item => item.name.toLowerCase().indexOf(this.insightSearchText.toLowerCase()) >= 0)]
-        }, {
-          name: 'Help',
-          group: [...this.dashboardMenus6.filter(item => item.name.toLowerCase().indexOf(this.insightSearchText.toLowerCase()) >= 0)]
-        }];
-      setTimeout(() => {
-        this.lobAccordion.openAll();
-      }, 300);
-      return;
-    }
-
-    this.dashboardMenus = [
-      {name: 'Executive Dashboards', group: [...this.dashboardMenus1]}, {
-        name: 'DI Dashboards',
-        group: [...this.dashboardMenus2]
-      }, {name: 'Premimum Edge Dashboards', group: [...this.dashboardMenus3]}, {
-        name: 'Other Dashboards',
-        group: [...this.dashboardMenus4]
-      }, {name: 'Administration', group: [...this.dashboardMenus5]}, {name: 'Help', group: [...this.dashboardMenus6]}];
-
-    setTimeout(() => {
-      this.lobAccordion.openAll();
-    }, 300);
   }
 
   getBrowserName(): void {
@@ -602,6 +594,10 @@ export class AppHeaderComponent implements OnInit {
     }
 
     this.isProfileContainerOpened = !this.isProfileContainerOpened;
+  }
+
+  clickedOutOfUserProfile(){
+    this.isProfileContainerOpened = false;
   }
 
   closeUserSearch(event?): void {

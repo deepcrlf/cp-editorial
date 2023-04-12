@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, HostListener, Inject, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApplicationService} from '../../../services/application/application.service';
 
 @Component({
@@ -15,7 +15,6 @@ export class PublisherModalComponent implements OnInit, AfterViewInit {
   ];
   userForm: FormGroup;
   submitted = false;
-  role: any = null;
 
   constructor(private formBuilder: FormBuilder,
               public applicationService: ApplicationService,
@@ -30,20 +29,20 @@ export class PublisherModalComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      firstName: [{value: '',}],
-      lastName: [{value: '', }],
-      email: [{value: '', }],
-      createdDate: [{value: '', }],
+      title: [{value: '',}],
+      fileName: [{value: '', disabled: true}],
+      description: [{value: '', }],
+      assetDate: [{value: '', }],
+      subject: [{value: '', disabled: true}],
     });
     if (this.data) {
       this.userForm.patchValue({
-        firstName: this.data.firstName,
-        lastName: this.data.fileName,
-        email: this.data.email,
-        createdDate: this.data.date,
+        title: this.data.title,
+        fileName: this.data.fileName,
+        description: this.data.description,
+        assetDate: new FormControl(this.data.date),
+        subject: 'The Canadian Press',
       });
-
-      this.role = this.role[0].id;
     }
   }
 
@@ -52,7 +51,7 @@ export class PublisherModalComponent implements OnInit, AfterViewInit {
     return this.userForm.controls;
   }
 
-  onSubmitUserProfile() {
+  onSubmitPhotoProfile() {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -60,7 +59,7 @@ export class PublisherModalComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    this.applicationService.setUser({...this.userForm.getRawValue(), role: this.role, id: this.data.id});
+    this.applicationService.setUser({...this.userForm.getRawValue(),  id: this.data.id});
     this.dialogRef.close();
 
     /*this.toastr.success('<span>' +

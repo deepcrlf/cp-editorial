@@ -1,6 +1,6 @@
 @import '../../../styles/variables';
 
-::ng-deep .app-dark-mode{
+::ng-deep .app-dark-mode {
   .app-breadcrumb {
     .breadcrumb {
       a {
@@ -29,14 +29,20 @@
     margin-bottom: 0;
 
     a {
-      color: $TextGrey;
+      color: $CoolGrey;
+      font-weight: 600;
+      text-decoration: none;
+
+      &.active {
+        color: $TextGrey;
+      }
     }
 
   }
 
   .breadcrumb-item + .breadcrumb-item {
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 2rem;
 
     &:before {
       /*font-family: "feather";
@@ -47,7 +53,7 @@
       content: "";
       border-color: transparent $CPPrimary;
       border-style: solid;
-      border-width: 3px 0 3px 5px;
+      border-width: 5px 0 5px 7px;
       margin-bottom: 2px;
 
       &:first-child {
@@ -90,6 +96,6 @@
 .app-breadcrumb .breadcrumb-item + .breadcrumb-item:before {
   color: $CPPrimary !important;
   position: absolute;
-  top: 10.5px;
-  left: 0.7rem;
+  top: 8.5px;
+  left: 0.8rem;
 }

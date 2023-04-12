@@ -15,8 +15,9 @@
                   <i class="feather icon-home"></i>
                 </a>
               </li>-->
-              <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbs;" [hidden]="!breadcrumb.label.length">
-                <a [ngClass]="breadcrumb.status === false ? 'not-active': ''"
+              <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbs; index as i"
+                  [hidden]="!breadcrumb.label.length">
+                <a [ngClass]="{'active': i === breadcrumbs.length-1}"
                    [routerLink]="breadcrumb.url">{{breadcrumb.label}}</a>
               </li>
             </ul>

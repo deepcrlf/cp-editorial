@@ -14,7 +14,6 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
   dashboardMenuOpened = false;
   dashboardSearchOpened = false;
   insightSearchText = '';
-
   dashboardSearchResult = [
     {
       des: 'Overall 2021 And Three-year Guidance Both Largely As Expected',
@@ -38,26 +37,26 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
 
   toolsMenus = [
     {
-      name: 'Tracker',
-      icon: 'Table_Chart',
+      name: 'Apple Tracker',
+      icon: 'auto_stories',
       tabUrl: '/tracker',
       tabName: 'Email Notifications'
     },
     {
-      name: 'Photo Publisher', icon: 'Published_With_Changes',
+      name: 'Photo Publisher', icon: 'panorama',
       tabUrl: '/publisher', tabName: ''
     },
   ];
   adminMenus = [
     {
       name: 'Manage Users',
-      icon: 'manage_accounts',
+      icon: 'badge',
       tabUrl: '/users',
       tabName: 'Email Notifications'
     },
   ];
   helpMenus = [
-    {name: 'Help', icon: 'Help', tabUrl: '/help', tabName: 'Help'}
+    {name: 'Help', icon: 'sms_failed', tabUrl: '/help', tabName: 'Help'}
   ];
   dashboardMenus: any = [];
 

@@ -10,6 +10,7 @@ import {UserModalComponent} from "./user-modal/user-modal.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsColor: '#cc212c',
@@ -31,6 +32,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ReactiveFormsModule,
     NgSelectModule,
     AgGridModule,
+    MatCheckboxModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     UserManagementPageRoutingModule
   ]

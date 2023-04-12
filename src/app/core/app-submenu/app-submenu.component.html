@@ -1,20 +1,23 @@
 <div class="d-flex align-items-center app-submenu">
   <div class="position-relative mx-2">
     <input class="app-text-box search-box" id="search-dashboard"
+           [(ngModel)]="submenuSearchText"
+           (keyup)="submenuSearch()"
            placeholder="Search"/>
 
-    <span class="icon-search material-symbols-outlined light-icon clr-burgandy">search</span>
+    <span class="icon-search material-symbols-outlined medium-icon">search</span>
   </div>
   <div>
-    <span class="material-symbols-outlined semi-bold-icon header-menu"
-          matTooltip="Custom Date Range"
+    <span (clickOutside)="clickedOutOfDateRagne()" class="material-symbols-outlined semi-bold-icon header-menu"
+          matTooltip="Export to file"
           matTooltipPosition="below"
-          (click)="toggleContainer(null)">Date_range</span>
-    <div class="date-range-container" [ngClass]="{'opened': isDateRangeContainerOpened}">
+          (click)="toggleContainer(null)">text_snippet</span>
+    <div class="date-range-container"
+         [ngClass]="{'opened': isDateRangeContainerOpened}">
 
-      <div class="one">
+      <!--<div class="one">
         <div class="two"></div>
-      </div>
+      </div>-->
       <div class="date-ranges">
         <label class="mb-2 mt-2 fw-medium fs-16">Select Date Range</label>
         <div class="app-mat-form-field ml-3 d-flex align-items-center">
@@ -31,25 +34,34 @@
                                      [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker></mat-date-range-picker>
           </mat-form-field>
+        </div>
       </div>
       <div class="see-all ">
-        <button class="app-button-primary my-3"> Apply</button>
-        <button class="app-button-primary my-3"> Download</button>
-<!--
-        <a class="animated-link clr-burgandy fw-medium" href="#">Apply</a>
-        <a class="see-all-link animated-link clr-burgandy fw-medium">Download</a>-->
+        <!--<button class="app-button-primary my-3" (click)="applySubmenuDateFilter()"> Apply</button>-->
+        <button class="app-button-primary my-3" (click)="downloadSubmenuDateFilter()"> Download</button>
       </div>
     </div>
   </div>
   <span class="material-symbols-outlined semi-bold-icon header-menu"
-        matTooltip="Refresh"
-        matTooltipPosition="below">Refresh</span>
-  <span class="material-symbols-outlined header-menu"
+        matTooltip="Sync data"
+        matTooltipPosition="below" (click)="refreshSubmenu()">sync</span>
+  <!--<span class="material-symbols-outlined header-menu"
+        (click)="openFullscreen()" *ngIf="!isFullScreen"
         matTooltip="{{isFullScreen ? 'Collapse Window' : 'Expand Window'}}"
-        matTooltipPosition="below">
-                            <i class="ri-fullscreen-line"
+        matTooltipPosition="below">-->
+
+    <span class="material-symbols-outlined semi-bold-icon header-menu"
+          matTooltip="Exit fullscreen"
+          matTooltipPosition="below"
+          (click)="closeFullscreen()" *ngIf="isFullScreen">Fullscreen_exit</span>
+
+    <span class="material-symbols-outlined semi-bold-icon header-menu"
+          matTooltip="Fullscreen"
+          matTooltipPosition="below"
+          (click)="openFullscreen()" *ngIf="!isFullScreen">Fullscreen</span>
+                            <!--<i class="ri-fullscreen-line"
                                (click)="openFullscreen()" *ngIf="!isFullScreen"></i>
                             <i class="ri-fullscreen-exit-line"
-                               (click)="closeFullscreen()" *ngIf="isFullScreen"></i>
-                        </span>
+                               (click)="closeFullscreen()" *ngIf="isFullScreen"></i>-->
+<!--                        </span>-->
 </div>
